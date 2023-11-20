@@ -27,3 +27,10 @@ def render_div_page():
     a = int(request.args["a"])
     b = int(request.args["b"])
     return str(div(a, b))
+
+@app.route("/math/<operation>")
+def render_math_page(operation):
+    a = int(request.args["a"])
+    b = int(request.args["b"])
+    operations = {"add": add, "sub": sub, "mult": mult, "div": div}
+    return str(operations[operation](a, b))
